@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Travis Scott | Elite Personal Trainer</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;1,400&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --charcoal: #141414;
+    --panel: #1a1a1a;
+    --accent: #e8ff00;
+    --accent2: #ff4c00;
+    --white: #f5f5f0;
+    --muted: #888;
+    --border: rgba(255,255,255,0.07);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--black);
+    padding: 0.6rem 1.4rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .nav-cta:hover { background: #fff; transform: scale(1.02); }
+
+  /* hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 3rem 4rem 3rem;
+    padding-top: 120px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 10vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-title em {
+    display: block;
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--black);
+    padding: 0.9rem 2.2rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: #fff; transform: translateY(-2px); }
+
+  .btn-outline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--white);
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(20%) contrast(1.05);
+    display: block;
+  }
+
+  .hero-right::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--black) 0%, transparent 30%),
+                linear-gradient(0deg, var(--black) 0%, transparent 25%);
+  }
+
+  .hero-stat-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border);
+    z-index: 3;
+  }
+
+  .hero-stat {
+    padding: 1.5rem 2.5rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .hero-stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    background: var(--accent);
+    overflow: hidden;
+    padding: 0.75rem 0;
+    position: relative;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    white-space: nowrap;
+    animation: marquee 18s linear infinite;
+  }
+
+  .marquee-track span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    color: var(--black);
+    padding: 0 2rem;
+  }
+
+  .marquee-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--black);
+    border-radius: 50%;
+    vertical-align: middle;
+    margin: 0 0.5rem;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 6rem 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .about-img-wrap {
+    position: relative;
+    height: 600px;
+  }
+
+  .about-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(15%);
+    display: block;
+  }
+
+  .about-badge {
+    position: absolute;
+    bottom: 2rem;
+    right: -1.5rem;
+    background: var(--accent);
+    color: var(--black);
+    padding: 1.5rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 1.3;
+    width: 130px;
+    z-index: 2;
+  }
+
+  .about-badge strong {
+    display: block;
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 4rem;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .section-title em {
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  .about-text {
+    color: rgba(245,245,240,0.7);
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+
+  .cert-item::before {
+    content: '✓';
+    width: 22px;
+    height: 22px;
+    background: rgba(232,255,0,0.12);
+    color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+  }
+
+  /* ── PROGRAMS / PRICING ── */
+  #pricing {
+    background: var(--charcoal);
+    padding: 6rem 3rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .plan-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+    overflow: hidden;
+  }
+
+  .plan-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--border);
+    transition: background 0.3s;
+  }
+
+  .plan-card:hover {
+    border-color: rgba(232,255,0,0.3);
+    transform: translateY(-4px);
+  }
+
+  .plan-card:hover::before {
+    background: var(--accent);
+  }
+
+  .plan-card.featured {
+    border-color: var(--accent);
+    background: rgba(232,255,0,0.04);
+  }
+
+  .plan-card.featured::before {
+    background: var(--accent);
+  }
+
+  .plan-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: var(--accent2);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .plan-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .plan-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.3rem;
+  }
+
+  .plan-price sup {
+    font-size: 1.8rem;
+    vertical-align: top;
+    margin-top: 0.6rem;
+    display: inline-block;
+  }
+
+  .plan-period {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 1.8rem;
+  }
+
+  .plan-highlight {
+    background: rgba(232,255,0,0.1);
+    border-left: 3px solid var(--accent);
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.8rem;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .plan-features {
+    list-style: none;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .plan-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-size: 0.9rem;
+    color: rgba(245,245,240,0.75);
+    line-height: 1.5;
+  }
+
+  .plan-features li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    margin-top: 0.1rem;
+  }
+
+  .plan-cta {
+    display: block;
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .plan-cta-outline {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+  }
+
+  .plan-cta-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .plan-cta-solid {
+    background: var(--accent);
+    color: var(--black);
+  }
+
+  .plan-cta-solid:hover { background: #fff; }
+
+  /* ── SERVICES ── */
+  #services {
+    padding: 6rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 4rem;
+  }
+
+  .service-item {
+    background: var(--black);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+  }
+
+  .service-item:hover { background: var(--panel); }
+
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .service-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* ── TRANSFORMATION GALLERY ── */
+  #gallery {
+    background: var(--charcoal);
+    padding: 6rem 3rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 3.5rem;
+  }
+
+  .gallery-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    background: var(--panel);
+  }
+
+  .gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(40%) contrast(1.05);
+    transition: filter 0.4s, transform 0.5s;
+    display: block;
+  }
+
+  .gallery-card:hover img {
+    filter: grayscale(0%) contrast(1.05);
+    transform: scale(1.04);
+  }
+
+  .gallery-card-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 1.2rem 1rem;
+    background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #reviews {
+    padding: 6rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .review-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .review-card:hover { border-color: rgba(232,255,0,0.2); }
+
+  .review-stars {
+    color: var(--accent);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .review-quote {
+    font-size: 0.9rem;
+    color: rgba(245,245,240,0.8);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .author-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+  }
+
+  .author-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+  }
+
+  .author-info {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+  }
+
+  /* ── CTA BANNER ── */
+  #cta {
+    background: var(--accent);
+    padding: 5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #cta::before {
+    content: 'START';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20vw;
+    color: rgba(0,0,0,0.06);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    color: var(--black);
+    line-height: 0.95;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .cta-sub {
+    font-size: 0.95rem;
+    color: rgba(10,10,10,0.65);
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .btn-dark {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--black);
+    color: var(--white);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .btn-dark:hover { background: #1a1a1a; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    border-top: 1px solid var(--border);
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: right;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .reviews-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+
+    #hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-right {
+      height: 55vw;
+      min-height: 280px;
+    }
+
+    .hero-right::after {
+      background: linear-gradient(0deg, var(--black) 0%, transparent 40%);
+    }
+
+    .hero-left {
+      padding: 6rem 1.5rem 2rem;
+    }
+
+    .hero-stat-bar {
+      position: static;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero-stat { padding: 1rem; }
+    .stat-num { font-size: 1.8rem; }
+
+    #about {
+      grid-template-columns: 1fr;
+      padding: 4rem 1.5rem;
+    }
+
+    .about-img-wrap { height: 380px; }
+    .about-badge { right: 1rem; }
+    .about-content { padding-left: 0; padding-top: 3rem; }
+
+    #pricing { padding: 4rem 1.5rem; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 440px; }
+
+    #services { padding: 4rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+
+    #gallery { padding: 4rem 1.5rem; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+
+    #reviews { padding: 4rem 1.5rem; }
+    .reviews-grid { grid-template-columns: 1fr; }
+
+    #cta { padding: 4rem 1.5rem; }
+
+    footer {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+    .footer-copy { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Travis Scott</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <a href="#pricing" class="nav-cta">Start Now</a>
+  <button class="hamburger" onclick="this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Elite Personal Training</p>
+    <h1 class="hero-title">
+      Build The<br>
+      Body You<br>
+      <em>Deserve.</em>
+    </h1>
+    <p class="hero-subtitle">
+      Real results. Zero excuses. Travis Scott brings elite-level coaching, personalized programming, and relentless accountability to every single client.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">View Plans</a>
+      <a href="#about" class="btn-outline">Meet Travis</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img
+      src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&auto=format&fit=crop&q=80"
+      alt="Travis Scott — Personal Trainer"
+    />
+  </div>
+
+  <div class="hero-stat-bar">
+    <div class="hero-stat">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Clients Transformed</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num">10</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="hero-stat">
+      <div class="stat-num">98%</div>
+      <div class="stat-label">Success Rate</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Strength Training</span><span class="marquee-dot"></span>
+    <span>Fat Loss</span><span class="marquee-dot"></span>
+    <span>Muscle Building</span><span class="marquee-dot"></span>
+    <span>Nutrition Coaching</span><span class="marquee-dot"></span>
+    <span>Cardio Programming</span><span class="marquee-dot"></span>
+    <span>Body Recomposition</span><span class="marquee-dot"></span>
+    <span>Online Coaching</span><span class="marquee-dot"></span>
+    <span>Strength Training</span><span class="marquee-dot"></span>
+    <span>Fat Loss</span><span class="marquee-dot"></span>
+    <span>Muscle Building</span><span class="marquee-dot"></span>
+    <span>Nutrition Coaching</span><span class="marquee-dot"></span>
+    <span>Cardio Programming</span><span class="marquee-dot"></span>
+    <span>Body Recomposition</span><span class="marquee-dot"></span>
+    <span>Online Coaching</span><span class="marquee-dot"></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-img-wrap reveal">
+    <img
+      src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&auto=format&fit=crop&q=80"
+      alt="Travis Scott training"
+    />
+    <div class="about-badge">
+      <strong>10+</strong>
+      Years of Elite Coaching
+    </div>
+  </div>
+
+  <div class="about-content reveal">
+    <p class="section-label">About Travis</p>
+    <h2 class="section-title">Coaching<br>Is My<br><em>Craft.</em></h2>
+    <p class="about-text">
+      Travis Scott is a certified strength & conditioning specialist with over a decade of experience transforming bodies and minds. From competitive athletes to everyday people ready to reclaim their health — Travis has seen it all and coached through it all.
+    </p>
+    <p class="about-text">
+      His approach is simple: science-backed programming, ruthless consistency, and zero fluff. No gimmicks. No trendy nonsense. Just proven methods that deliver lasting results.
+    </p>
+    <div class="cert-grid">
+      <div class="cert-item">NSCA Certified Strength & Conditioning Specialist</div>
+      <div class="cert-item">Precision Nutrition Level 2 Coach</div>
+      <div class="cert-item">NASM Certified Personal Trainer</div>
+      <div class="cert-item">FMS Level 2 Movement Specialist</div>
+      <div class="cert-item">CPR / AED Certified</div>
+      <div class="cert-item">10+ Years Elite Coaching</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header reveal">
+    <p class="section-label" style="justify-content:center;">What I Offer</p>
+    <h2 class="section-title">Training<br><em>Programs</em></h2>
+  </div>
+
+  <div class="services-grid reveal">
+    <div class="service-item">
+      <span class="service-icon">🏋️</span>
+      <div class="service-name">Strength & Power</div>
+      <p class="service-desc">Progressive overload programming designed to build raw strength and functional power. Periodized to keep you breaking records.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">🔥</span>
+      <div class="service-name">Fat Loss & Shred</div>
+      <p class="service-desc">Metabolic conditioning and smart nutrition strategies to torch fat while preserving muscle. Real, sustainable results.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">📈</span>
+      <div class="service-name">Muscle Building</div>
+      <p class="service-desc">Hypertrophy-focused training with precise volume and intensity manipulation. Built for serious gains.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">🥗</span>
+      <div class="service-name">Nutrition Coaching</div>
+      <p class="service-desc">Personalized meal planning, macro tracking, and lifestyle nutrition guidance. Food is fuel — let's optimize yours.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">🏃</span>
+      <div class="service-name">Cardio & Conditioning</div>
+      <p class="service-desc">HIIT, zone training, and sport-specific cardio protocols tailored to your goals and recovery capacity.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">📲</span>
+      <div class="service-name">Online Coaching</div>
+      <p class="service-desc">Full remote coaching with app-based programming, weekly check-ins, and direct access to Travis. Train anywhere.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-header reveal">
+    <p class="section-label" style="justify-content:center;">Client Results</p>
+    <h2 class="section-title">Real People.<br><em>Real Gains.</em></h2>
+  </div>
+
+  <div class="gallery-grid reveal">
+    <div class="gallery-card">
+      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&auto=format&fit=crop&q=80" alt="Client transformation" />
+      <div class="gallery-card-label">-28 lbs / 12 weeks</div>
+    </div>
+    <div class="gallery-card">
+      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&auto=format&fit=crop&q=80" alt="Client transformation" />
+      <div class="gallery-card-label">+15 lbs muscle / 16 weeks</div>
+    </div>
+    <div class="gallery-card">
+      <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=600&auto=format&fit=crop&q=80" alt="Client transformation" />
+      <div class="gallery-card-label">Full body recomp / 6 months</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-header reveal">
+    <p class="section-label" style="justify-content:center;">Pricing</p>
+    <h2 class="section-title">Invest In<br><em>Yourself.</em></h2>
+  </div>
+
+  <div class="pricing-grid reveal">
+    <!-- Weekly -->
+    <div class="plan-card">
+      <div class="plan-name">Weekly Plan</div>
+      <div class="plan-price"><sup>$</sup>149</div>
+      <div class="plan-period">per week · billed weekly · cancel anytime</div>
+      <ul class="plan-features">
+        <li>Fully personalized weekly workout plan</li>
+        <li>Nutrition guidance & macro targets</li>
+        <li>Access to training app</li>
+        <li>Weekly progress check-in</li>
+        <li>Direct messaging with Travis</li>
+      </ul>
+      <a href="#cta" class="plan-cta plan-cta-outline">Get Started</a>
+    </div>
+
+    <!-- 3-Month -->
+    <div class="plan-card featured">
+      <div class="plan-badge">Best Value</div>
+      <div class="plan-name">3-Month Plan</div>
+      <div class="plan-price"><sup>$</sup>1,499</div>
+      <div class="plan-period">for 3 months · save $248 · most popular</div>
+      <div class="plan-highlight">🎁 FREE 1-week bonus included — a $149 value on us!</div>
+      <ul class="plan-features">
+        <li>Everything in the Weekly Plan</li>
+        <li>Full 3-month periodized program</li>
+        <li>Monthly body composition assessment</li>
+        <li>Priority response & daily messaging</li>
+        <li>Custom meal plan (not just macros)</li>
+        <li>1-week FREE — automatically added</li>
+      </ul>
+      <a href="#cta" class="plan-cta plan-cta-solid">Claim Offer</a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-header reveal">
+    <p class="section-label" style="justify-content:center;">Testimonials</p>
+    <h2 class="section-title">What Clients<br><em>Say.</em></h2>
+  </div>
+
+  <div class="reviews-grid reveal">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"I tried every trainer in the city before finding Travis. In 12 weeks I dropped 27 pounds and finally have the energy to keep up with my kids. This isn't just fitness — it's a life change."</p>
+      <div class="review-author">
+        <img class="author-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&auto=format&fit=crop&q=80" alt="Jessica M." />
+        <div>
+          <div class="author-name">Jessica M.</div>
+          <div class="author-info">Lost 27 lbs · 12-week program</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"Travis doesn't just hand you a plan and disappear. He's in the trenches with you every step. I hit a 315 lb squat PR after 4 months — something I thought was impossible at 42."</p>
+      <div class="review-author">
+        <img class="author-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80" alt="Marcus T." />
+        <div>
+          <div class="author-name">Marcus T.</div>
+          <div class="author-info">Strength athlete · 4-month client</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"As a mom of three with zero free time, I was skeptical. Travis built a program around MY life. Six months later I'm in the best shape of my life — and I actually enjoy working out now."</p>
+      <div class="review-author">
+        <img class="author-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&auto=format&fit=crop&q=80" alt="Samantha R." />
+        <div>
+          <div class="author-name">Samantha R.</div>
+          <div class="author-info">Body recomp · 6-month program</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"The 3-month plan is an absolute steal. The free extra week sealed the deal for me. Travis's programming is legitimately the best I've ever followed — smart, progressive, and effective."</p>
+      <div class="review-author">
+        <img class="author-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80" alt="Derek W." />
+        <div>
+          <div class="author-name">Derek W.</div>
+          <div class="author-info">Muscle building · 3-month plan</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"I've been training for years but plateaued hard. Travis identified exactly what I was doing wrong and rebuilt my program from scratch. I added 11 lbs of muscle in 16 weeks. Unreal."</p>
+      <div class="review-author">
+        <img class="author-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&auto=format&fit=crop&q=80" alt="Carlos N." />
+        <div>
+          <div class="author-name">Carlos N.</div>
+          <div class="author-info">Advanced lifter · 16-week program</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-quote">"The nutrition coaching alone was worth every dollar. I always thought I was eating healthy — turns out I was totally wrong. Travis simplified it without making me feel stupid. Down 19 lbs!"</p>
+      <div class="review-author">
+        <img class="author-avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&auto=format&fit=crop&q=80" alt="Priya S." />
+        <div>
+          <div class="author-name">Priya S.</div>
+          <div class="author-info">Fat loss · nutrition + training</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section id="cta">
+  <h2 class="cta-title">Your Best Body<br>Starts Today.</h2>
+  <p class="cta-sub">No contracts. No excuses. Just results. Start your first week for $149 — or save big with the 3-month plan.</p>
+  <a href="mailto:travis@travisscottfitness.com" class="btn-dark">Book a Free Consultation</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Travis Scott</div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Travis Scott Fitness.<br>All rights reserved.</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Stagger children of reveal grids
+  document.querySelectorAll('.services-grid .service-item, .reviews-grid .review-card, .gallery-grid .gallery-card, .pricing-grid .plan-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.08}s`;
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
